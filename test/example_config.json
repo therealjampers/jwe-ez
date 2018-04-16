@@ -1,0 +1,14 @@
+{
+  "tokenProperties": {
+    "iss": "alice",
+    "validAudiences": ["alice", "bob"],
+    "expirySeconds": 1
+  },
+  "keyDefinition": {
+    "kty": "oct",
+    "kid": "JWE-EZ_DEVELOPMENT",
+    "k":   "Ls_HQn6Dow0dH_v4DQ5WZr5zfhqVdsaRlx416AOQ59M",
+    "alg": "A256KW",
+    "use": "enc"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "jwe-ez",
+  "version": "1.0.0",
+  "description": "convenience token API for creating JWE tokens with AES128CBC_HMACSHA256 confidentiality and integrity",
+  "main": "index.js",
+  "scripts": {
+    "lint": "standard",
+    "test": "node test/tests.js",
+    "posttest": "npm run lint"
+  },
+  "keywords": [
+    "JWE, convenience, API, tokens, AES128CBC_HMACSHA256"
+  ],
+  "author": "therealjampers",
+  "license": "Apache 2.0",
+  "devDependencies": {
+    "standard": "^11.0.1",
+    "tape": "^4.9.0"
+  },
+  "dependencies": {
+    "node-jose": "^0.11.0"
+  }
+}
