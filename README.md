@@ -38,13 +38,13 @@ const developmentKeyId = 'JWE-EZ_DEVELOPMENT'
 const je = require('jwe-ez')(config, developmentKeyId)
 
 var claims = { foo: 'bar', stuff: 'nonsense' }
-je.createJWE(claims, (tokenString) => {
+je.createJWE(claims, (err, tokenString) => {
   console.log(tokenString)
   /*
   eyJhbGciOiJBMjU2S1ciLCJraWQiOiJKV0UtRVpfREVWRUxPUE1FTlQiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0.ox5JW3b5F-LuvHK60KK6ZxTNSsEL-eQOxXXrXGDqLeok2aOOPR_pqA.sbWamMH2WtXPiCO1VCbrqw.uhEhWKfA0hhEAzbsTOxaiSf9d45RHmxesDqs2fJYRzs6C0NWsL8SF6PdBzaOPqAUwgnR9-Fq1Ldsg6cRbJBnGQ.IasqvzuX7XXLgvBrOFrHgQ
   */
 
-  je.verifyJWE(tokenString, (verifiedClaims) => {
+  je.verifyJWE(tokenString, (err, verifiedClaims) => {
     console.log(verifiedClaims)
     /*
     { foo: 'bar',
