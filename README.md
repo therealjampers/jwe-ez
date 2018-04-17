@@ -20,7 +20,7 @@ Provide a config object and a developmentKeyId which is used to detect if we sho
 _NB. "k" is a base64url encoded representation of a 256 bit symmetric key._
 
 ```
-{
+const config = {
   "tokenProperties": {
     "iss": "alice",
     "validAudiences": ["alice", "bob"],
