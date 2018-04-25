@@ -60,6 +60,13 @@ je.createJWE(claims, (err, tokenString) => {
 
 ```
 
+## Generating Keys
+```
+require('crypto').randomBytes(32).toString('base64').replace(/=/g,'').replace(/\+/g, '-').replace(/\//g,'_')
+/* nbE6srz6D31mXs9WMzKK-KOgNrYY1ctTF7bn0s_kTW8 */
+
+```
+
 ## Linting
 
 ```npm run lint```

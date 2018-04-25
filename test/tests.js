@@ -125,3 +125,17 @@ it('verifyJWE async', (t) => {
     })
   })
 })
+
+it('verifyJWE async', (t) => {
+  je.createJWE({ 'foo': 'bar', 'stuff': 'nonsense', 'aud': 'bob' }, (err, tokenString) => {
+    if (err) { console.log('UNEXPECTED ERROR IN UNIT TEST', err) }
+    let lastSigChar = tokenString.slice(-1)
+    tokenString = tokenString.slice(0, -1)
+    lastSigChar = String.fromCharCode(lastSigChar.charCodeAt(0) ^ 1)
+    tokenString += lastSigChar
+    je.verifyJWE(tokenString, (err, claimsObject) => {
+      t.deepEqual(err, E('suspected tampering of token'), 'error when token has been tampered')
+      t.end()
+    })
+  })
+})

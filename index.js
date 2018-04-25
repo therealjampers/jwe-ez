@@ -110,9 +110,10 @@ module.exports = function (config, developmentKeyId, logger, errorLogger) {
       algorithms: ['A256KW'],
       allowAlgs: ['A256KW']
     }
-
+    // TODO move this post parse
     var headerB64 = Buffer.from(tokenString.split('.')[0], 'base64')
     if (headerB64.indexOf('"enc":"A128CBC-HS256"') === -1) return callback(errorHelper('verifyJWE invalid enc in header'))
+
     ensureKeyReady(() => {
       jose.JWE.createDecrypt(key, opts)
         .decrypt(tokenString)
@@ -139,6 +140,10 @@ module.exports = function (config, developmentKeyId, logger, errorLogger) {
           if (config.tokenProperties.validAudiences.indexOf(parsed.aud) === -1) return callback(errorHelper('verifyJWE invalid audience'))
 
           callback(null, parsed)
+        })
+        .catch(function (err) {
+          error(err)
+          return callback(errorHelper('suspected tampering of token'))
         })
     })
   }
