@@ -1,6 +1,6 @@
 {
   "name": "jwe-ez",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "convenience token API for creating JWE tokens with AES128CBC_HMACSHA256 confidentiality and integrity",
   "main": "index.js",
   "scripts": {
