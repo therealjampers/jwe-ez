@@ -37,7 +37,7 @@ const config = {
 const developmentKeyId = 'JWE-EZ_DEVELOPMENT'
 const je = require('jwe-ez')(config, developmentKeyId)
 
-var claims = { foo: 'bar', stuff: 'nonsense' }
+var claims = { foo: 'bar', stuff: 'nonsense', aud: 'bob' }
 je.createJWE(claims, (err, tokenString) => {
   console.log(tokenString)
   /*
