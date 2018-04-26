@@ -49,6 +49,29 @@ it('createJWE circular async', (t) => {
   })
 })
 
+it('createJWE thrown error async', (t) => {
+  let goodClaims = { 'foo': 'bar', 'stuff': 'nonsense', 'aud': 'bob' }
+  let badConfig = {
+    'tokenProperties': {
+      'iss': 'alice',
+      'validAudiences': ['alice', 'bob'],
+      'expirySeconds': 1
+    },
+    'keyDefinition': {
+      'kty': 'oct',
+      'kid': 'JWE-EZ_DEVELOPMENT',
+      'k': 'INVALID_KEY_NOT_BASE64!',
+      'alg': 'A256KW',
+      'use': 'enc'
+    }
+  }
+  let brokenJE = require('../')(badConfig, developmentKeyId)
+  brokenJE.createJWE(goodClaims, (err, tokenString) => {
+    t.deepEqual(err, E('error encrypting token'), 'returns Error with badConfig (invalid key) argument')
+    t.end()
+  })
+})
+
 it('createJWE async', (t) => {
   je.createJWE({ foo: 'bar' }, (err, tokenString) => {
     console.log('tokenString', tokenString)

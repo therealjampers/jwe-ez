@@ -96,6 +96,10 @@ module.exports = function (config, developmentKeyId, logger, errorLogger) {
         /* {result} is a JSON Object -- JWE using the JSON General Serialization */
         callback(null, result)
       })
+      .catch(function (err) {
+        error(err)
+        return callback(errorHelper('error encrypting token'))
+      })
   }
 
   function verifyJWE (tokenString, callback) {
