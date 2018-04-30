@@ -73,8 +73,8 @@ module.exports = function (config, developmentKeyId, logger, errorLogger) {
 
   function createJWE (claimsObject, callback) {
     /* sync */
+    if (typeof callback !== 'function') return errorHelper('createJWE invalid callback')
     if (typeof claimsObject !== 'object') return callback(errorHelper('createJWE invalid claimsObject'))
-    if (typeof callback !== 'function') return callback(errorHelper('createJWE invalid callback'))
 
     /* async */
     var iat = nowSeconds()
