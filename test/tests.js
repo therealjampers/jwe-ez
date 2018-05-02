@@ -84,13 +84,26 @@ it('createJWE async', (t) => {
   })
 })
 
-it('verifyJWE sync', (t) => {
-  t.deepEqual(je.verifyJWE(), E('verifyJWE invalid tokenString'), 'returns Error with no arguments')
-  t.deepEqual(je.verifyJWE({}, () => {}), E('verifyJWE invalid tokenString'), 'returns Error with incorrect type tokenString argument')
-  t.deepEqual(je.verifyJWE('foobar', () => {}), E('verifyJWE invalid tokenString'), 'returns Error with bad tokenString')
-  t.end()
+it('verifyJWE async', (t) => {
+  je.verifyJWE(undefined, (err, claimsObject) => {
+    t.deepEqual(err, E('verifyJWE invalid tokenString'), 'returns Error with no arguments')
+    t.end()
+  })
 })
 
+it('verifyJWE async', (t) => {
+  je.verifyJWE({}, (err, claimsObject) => {
+    t.deepEqual(err, E('verifyJWE invalid tokenString'), 'returns Error with no arguments')
+    t.end()
+  })
+})
+
+it('verifyJWE async', (t) => {
+  je.verifyJWE('foobar', (err, claimsObject) => {
+    t.deepEqual(err, E('verifyJWE invalid tokenString'), 'returns Error with no arguments')
+    t.end()
+  })
+})
 it('verifyJWE async', (t) => {
   let badHeader = Buffer.from('{"alg":"FOOBAR","kid":"SPOOFEYFOOFEYWOOFEY","enc":"FOOBARBAZQUX"}').toString('base64')
 

@@ -104,8 +104,8 @@ module.exports = function (config, developmentKeyId, logger, errorLogger) {
 
   function verifyJWE (tokenString, callback) {
     /* sync */
-    if (typeof tokenString !== 'string' || tokenString.length < 65) return errorHelper('verifyJWE invalid tokenString')
     if (typeof callback !== 'function') return errorHelper('verifyJWE invalid callback')
+    if (typeof tokenString !== 'string' || tokenString.length < 65) return callback(errorHelper('verifyJWE invalid tokenString'))
 
     /* async */
     // https://github.com/cisco/node-jose#allowing-or-disallowing-encryption-algorithms
