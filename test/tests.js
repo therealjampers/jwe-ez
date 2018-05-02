@@ -93,14 +93,14 @@ it('verifyJWE async', (t) => {
 
 it('verifyJWE async', (t) => {
   je.verifyJWE({}, (err, claimsObject) => {
-    t.deepEqual(err, E('verifyJWE invalid tokenString'), 'returns Error with no arguments')
+    t.deepEqual(err, E('verifyJWE invalid tokenString'), 'returns Error with incorrect type tokenString argument')
     t.end()
   })
 })
 
 it('verifyJWE async', (t) => {
   je.verifyJWE('foobar', (err, claimsObject) => {
-    t.deepEqual(err, E('verifyJWE invalid tokenString'), 'returns Error with no arguments')
+    t.deepEqual(err, E('verifyJWE invalid tokenString'), 'returns Error with bad tokenString')
     t.end()
   })
 })

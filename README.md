@@ -82,7 +82,6 @@ This runs all the test files that have been written into /test/tests.js by using
 ### TODO
 
 - move payloads to the "sub" claim
-- ensure audience is valid in createJWE
 - move developmentKeyId to config
 - assert(JWK.isKey(input.key)) for key verification
 - whitelist claimsObject keys in createJWE from config

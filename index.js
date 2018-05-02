@@ -17,7 +17,7 @@ module.exports = function (config, developmentKeyId, logger, errorLogger) {
   if (!keyDefinition || !developmentKeyId) return errorHelper('invalid arguments, check config and developmentKeyId')
 
   // TODO check that this is the relevant ENV var
-  if (keyDefinition.kid === developmentKeyId && process.ENV === 'prod') {
+  if (keyDefinition.kid === developmentKeyId && process.env.stage === 'prod') {
     error('FATAL ERROR: ensureKeyReady has a known development keyDefinition.kid for production!')
     process.exit(1)
   }
